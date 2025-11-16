@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardipsinh Jadeja - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0f0f23;
+            --card-color: #1a1a2e;
+            --card-hover: #25253a;
+            --text-color: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --accent-color: #f97316;
+            --accent-hover: #ea580c;
+            --accent-glow: rgba(249, 115, 22, 0.3);
+            --border-color: #27272a;
+            --gradient-1: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+            --gradient-2: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, var(--bg-color) 0%, #0f1434 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 300%;
+            height: 300%;
+            top: -100%;
+            left: -100%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 60s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 31, 58, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar a {
+            color: var(--text-muted);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-2);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--accent-color);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .navbar a:hover::before,
+        .navbar a.active::before {
+            width: 80%;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        section {
+            background: var(--card-color);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        section:hover::before {
+            opacity: 1;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.15);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        h1 { font-size: 2.8rem; letter-spacing: -0.5px; }
+        h2 { 
+            font-size: 2rem; 
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem; 
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gradient-2);
+        }
+        h3 { font-size: 1.5rem; color: #e8edf4; margin-top: 2rem; margin-bottom: 1rem; }
+        h4 { font-size: 1.1rem; color: var(--accent-color); margin-top: 1rem; margin-bottom: 0.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+        
+        p.placeholder {
+            font-style: italic;
+            color: var(--text-muted);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1.5rem;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.05), transparent);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .hero-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        .hero-header h1 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .hero-header .tagline {
+            font-size: 1.2rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-8px) scale(1.1);
+            background: rgba(0, 212, 255, 0.15);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info span:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .contact-info a {
+            color: var(--text-muted);
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        .about-me p {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .education-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .education-item {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .education-item:hover {
+            transform: translateX(8px);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-item:hover::before {
+            opacity: 1;
+        }
+
+        .education-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-size: 1.3rem;
+        }
+
+        .education-item .institution {
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .education-item .details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        
+        .education-item .details .grade {
+            font-weight: 600;
+            color: var(--accent-color);
+            padding: 0.25rem 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .skills-container {
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+        
+        .skill-category h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h4::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 20px var(--accent-glow);
+        }
+
+        .skill-item:hover::before {
+            left: 0;
+        }
+        
+        .certification-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .certification-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .certification-item:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            border-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .certification-item h4 {
+            margin: 0;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        
+        .certification-item .issuer {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .certification-item .date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card-content {
+            padding: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .project-card h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            margin-top: 0;
+        }
+
+        .project-card h3 a {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card h3 a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        
+        .project-card .accuracy {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .project-tools span {
+            font-size: 0.85rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 153, 204, 0.15));
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .project-tools span:hover {
+            background: var(--gradient-2);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+        
+        .advanced-skill-item {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.03), rgba(118, 75, 162, 0.03));
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        pre {
+            background: linear-gradient(135deg, #1e1e2e, #1a1a2e);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        pre::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(90deg, #ff5f56 0, #ff5f56 8px, transparent 8px, transparent 16px, #ffbd2e 16px, #ffbd2e 24px, transparent 24px, transparent 32px, #27c93f 32px, #27c93f 40px, transparent 40px);
+            border-radius: 12px 12px 0 0;
+        }
+
+        pre code {
+            display: block;
+            margin-top: 20px;
+        }
+        
+        code {
+            color: #d4d4d4;
+        }
+        
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .swot-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swot-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .swot-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        }
+
+        .swot-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .swot-item h4 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .swot-item ul {
+            list-style-position: inside;
+            padding-left: 0;
+            color: var(--text-muted);
+        }
+
+        .swot-item li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+        
+        blockquote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-color);
+            border-left: 4px solid var(--accent-color);
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1), transparent);
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        blockquote:hover {
+            transform: translateX(10px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.2);
+        }
+        
+        blockquote footer {
+            font-style: normal;
+            font-size: 0.95rem;
+            color: var(--accent-color);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(15, 20, 52, 0.8));
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+                justify-content: center;
+                gap: 0.5rem 1rem;
+            }
+            
+            .navbar a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .section-container {
+                padding: 9rem 1rem 1rem 1rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+            
+            .hero-header {
+                padding: 3rem 1.5rem;
+            }
+
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+
+            .contact-info {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .education-item .details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .certification-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#resume">Resume/CV</a>
+        <a href="#projects">Projects</a>
+        <a href="#advanced-skills">Advanced Skills</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#ethics">Ethics</a>
+        <a href="#future">Future Aspirations</a>
+        <a href="#conclusion">Conclusion</a>
+        <a href="#testimonials">Testimonials</a>
+    </nav>
+
+    <div class="section-container">
+        
+        <section id="home" class="hero-header">
+            <h1>Hardipsinh Jadeja</h1>
+            <p class="tagline">B.Tech Computer Engineering Student</p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/hardipsinh-jadeja-a91a52275/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/hardyJ01" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:connect.hardip@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> Gandhinagar</span>
+                <span><i class="fas fa-phone"></i> <a href="tel:+919316608133">+91-9316608133</a></span>
+            </div>
+        </section>
+
+        <section id="philosophy">
+            <h2>Introduction & Learning Philosophy</h2>
+            <div class="about-me">
+                <p>
+                    B.Tech Computer Engineering student with a 9.3 GPA and strong foundation in Python, C++, Java, SQL, and Machine Learning. Certified in Data Science, Supervised & Unsupervised Learning, and Advanced Algorithms. Experienced in developing predictive models, data visualization dashboards, and end-to-end ML pipelines. Passionate about leveraging data-driven insights and AI applications to solve real-world challenges.
+                </p>
+            </div>
+            <h3>My Learning Philosophy</h3>
+            <p>
+                I believe that true learning is an active, additive process. It's not just about consuming information, but about giving something back—by applying knowledge to build new solutions, sharing insights with others, and contributing to a collective understanding. My academic pursuit is guided by curiosity, persistence, and a hands-on-keyboard mentality where theory is immediately tested and validated through practice.
+            </p>
+        </section>
+
+        <section id="resume">
+            <h2>Resume/CV</h2>
+            <p>This section contains the formal details of my education, skills, and certifications.</p>
+            
+            <h3>Education</h3>
+            <ul class="education-list">
+                <li class="education-item">
+                    <h4>B.Tech. in Computer Engineering</h4>
+                    <p class="institution">Pandit Deendayal Energy University, Gandhinagar</p>
+                    <div class="details">
+                        <span class="date">Expected Graduation: 2027</span>
+                        <span class="grade">GPA: 9.3 / 10.0</span>
+                    </div>
+                </li>
+                <li class="education-item">
+                    <h4>12th - Science (PCM)</h4>
+                    <p class="institution">Kendriya Vidyalaya INS Valsura, Jamnagar</p>
+                    <div class="details">
+                        <span class="date">Completed: 2023</span>
+                        <span class="grade">Percentage: 90.2%</span>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Skills (Technical & Soft)</h3>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>Programming</h4>
+                    <ul class="skills-list">
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">C++</li>
+                        <li class="skill-item">C</li>
+                        <li class="skill-item">Java</li>
+                        <li class="skill-item">SQL</li>
+                        <li class="skill-item">JavaScript</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Data Science & ML</h4>
+                    <ul class="skills-list">
+                        <li class="skill-item">Scikit-learn</li>
+                        <li class="skill-item">Pandas</li>
+                        <li class="skill-item">NumPy</li>
+                        <li class="skill-item">Matplotlib</li>
+                        <li class="skill-item">Seaborn</li>
+                        <li class="skill-item">TensorFlow (beginner)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Web Development</h4>
+                    <ul class="skills-list">
+                        <li class="skill-item">HTML</li>
+                        <li class="skill-item">CSS</li>
+                        <li class="skill-item">Node.js</li>
+                        <li class="skill-item">Express.js</li>
+                        <li class="skill-item">PHP</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Database & Tools</h4>
+                    <ul class="skills-list">
+                        <li class="skill-item">MySQL</li>
+                        <li class="skill-item">MongoDB</li>
+                        <li class="skill-item">Jupyter Notebook</li>
+                        <li class="skill-item">Git/GitHub</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Other Skills (Soft & Professional)</h4>
+                    <ul class="skills-list">
+                        <li class="skill-item">Data Preprocessing</li>
+                        <li class="skill-item">Statistical Analysis</li>
+                        <li class="skill-item">Model Evaluation</li>
+                        <li class="skill-item">Problem Solving</li>
+                        <li class="skill-item">Communication</li>
+                        <li class="skill-item">Team Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Certifications and Professional Development</h3>
+            <ul class="certification-list">
+                <li class="certification-item">
+                    <div>
+                        <h4>Machine Learning</h4>
+                        <span class="issuer">Coursera, Stanford CPD, UVM</span>
+                    </div>
+                    <span class="date">Mar 2025</span>
+                </li>
+                <li class="certification-item">
+                    <div>
+                        <h4>Advanced Learning Algorithms</h4>
+                        <span class="issuer">Coursera, Stanford CPD, UVM</span>
+                    </div>
+                    <span class="date">Jan 2025</span>
+                </li>
+                <li class="certification-item">
+                    <div>
+                        <h4>Unsupervised Learning, Recommenders, Reinforcement Learning</h4>
+                        <span class="issuer">Coursera, Stanford CPD, UVM</span>
+                    </div>
+                    <span class="date">Dec 2024</span>
+                </li>
+                <li class="certification-item">
+                    <div>
+                        <h4>Supervised Machine Learning: Regression and Classification</h4>
+                        <span class="issuer">Coursera, Stanford CPD, UVM</span>
+                    </div>
+                    <span class="date">Oct 2024</span>
+                </li>
+                <li class="certification-item">
+                    <div>
+                        <h4>Data Science and Analytics</h4>
+                        <span class="issuer">Pregrad</span>
+                    </div>
+                    <span class="date">May 2024</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section id="projects">
+            <h2>Interdisciplinary Projects and Research</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>
+                            Bitcoin Price Analysis
+                            <a href="https://github.com/hardyJ01/Bitcoin-Analysis" target="_blank" title="View on GitHub"><i class="fab fa-github"></i></a>
+                        </h3>
+                        
+                        <h4>Project Overview and Objectives</h4>
+                        <p>
+                            Built ML models to predict Bitcoin price trends using time-series analysis. Applied data preprocessing, visualization, and regression models.
+                        </p>
+                        <p class="accuracy">
+                            Achieved 85% prediction accuracy in forecasting Bitcoin prices.
+                        </p>
+                        
+                        <h4>Methodologies Employed</h4>
+                        <p>Utilized Time-Series analysis to model temporal dependencies and regression models (like Linear Regression, Random Forest) to incorporate external market indicators. This integrated computer science (ML) with financial analysis.</p>
+                        
+                        <h4>Outcomes and Innovations</h4>
+                        <p>The hybrid model demonstrated that while time-series data is crucial, incorporating market sentiment (even if simplified) can improve predictive accuracy. The project resulted in a functional model achieving 85% accuracy on the test set.</p>
+                        
+                        <h4>Visuals or Prototypes</h4>
+                        <p>Generated a series of Matplotlib and Seaborn plots, including price trend decompositions, actual vs. predicted price overlays, and a residual error analysis to validate the model's performance. The final report was delivered as a Jupyter Notebook.</p>
+                        
+                        <h4>Critical Analysis of Challenges</h4>
+                        <p>The primary challenge was the high volatility and non-stationary nature of cryptocurrency data. Overcame this by applying differencing and log transformations. Another challenge was avoiding look-ahead bias during feature engineering, which was solved by using rolling windows.</p>
+                        
+                        <div class="project-tools">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Matplotlib</span>
+                            <span>Seaborn</span>
+                            <span>Scikit-learn</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>
+                            Rainfall Prediction
+                            <a href="https://github.com/hardyJ/RainfallPrediction" target="_blank" title="View on GitHub"><i class="fab fa-github"></i></a>
+                        </h3>
+                        
+                        <h4>Project Overview and Objectives</h4>
+                        <p>
+                            Developed a classification model to predict rainfall using weather parameters. Handled data preprocessing, feature selection, and applied algorithms like RNNs and Random Forest.
+                        </p>
+                        <p class="accuracy">
+                            Achieved high prediction accuracy.
+                        </p>
+                        
+                        <h4>Methodologies Employed</h4>
+                        <p>Employed a classification-based approach. The project involved significant data preprocessing and cleaning of meteorological data. We compared several models, including Logistic Regression, K-Nearest Neighbors, and Random Forest, using Scikit-learn.</p>
+                        
+                        <h4>Outcomes and Innovations</h4>
+                        <p>The Random Forest classifier yielded the highest accuracy due to its robustness in handling non-linear relationships between weather parameters. The model's feature importance analysis revealed that 'humidity' and 'wind gust speed' were the most significant predictors.</p>
+                        
+                        <h4>Visuals or Prototypes</h4>
+                        <p>Developed confusion matrices and ROC curves for each model to visually compare their performance. A pair plot was used during exploratory data analysis (EDA) to identify correlations between features.</p>
+                        
+                        <h4>Critical Analysis of Challenges</h4>
+                        <p>Handling missing data points from weather stations was a major hurdle. We addressed this by using K-Nearest Neighbors (KNN) imputation, which proved more effective than simple mean/median imputation for this dataset.</p>
+                        
+                        <div class="project-tools">
+                            <span>Python</span>
+                            <span>Scikit-learn</span>
+                            <span>Pandas</span>
+                            <span>Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>
+                            Travelcircle Web Application
+                            <a href="https://github.com/hardyJ01/TravelCompanionFinder" target="_blank" title="View on GitHub"><i class="fab fa-github"></i></a>
+                        </h3>
+                        
+                        <h4>Project Overview and Objectives</h4>
+                        <p>
+                            Developed a full-stack dynamic website for a travel agency, "Travelcircle." The objective was to create a user-friendly platform for browsing travel packages, managing bookings, and handling user inquiries.
+                        </p>
+                        <p class="accuracy">
+                            Successfully deployed a fully functional CRUD application.
+                        </p>
+                        
+                        <h4>Methodologies Employed</h4>
+                        <p>Built on a  MySQL, PHP, JavaScript stack. The backend was developed using pure PHP for handling server-side logic and database operations. MySQL was used for the relational database. The frontend used HTML, CSS, and JavaScript for user interaction and form validation.</p>
+                        
+                        <h4>Outcomes and Innovations</h4>
+                        <p>Delivered a complete web application with secure user authentication, a package browsing module, a booking system, and an admin panel for managing content. This project solidified my understanding of full-stack development and database management.</p>
+                        
+                        <h4>Visuals or Prototypes</h4>
+                        <p>The final deliverable was a live, hosted website. Key features included a dynamic package gallery fetched from the MySQL database and a JavaScript-powered booking form with real-time validation.</p>
+                        
+                        <h4>Critical Analysis of Challenges</h4>
+                        <p>The main challenge was ensuring database security and preventing SQL injection attacks. This was addressed by consistently using prepared statements (PDO) for all database queries. Managing user sessions securely with PHP was another critical learning curve.</p>
+                        
+                        <div class="project-tools">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advanced-skills">
+            <h2>Advanced Skill Development and Mastery</h2>
+            
+            <div class="advanced-skill-item">
+                <h4>Advanced Skill 1: ML Pipelines & API Development (FastAPI)</h4>
+                <p>Beyond just building models, I have experience in deploying them. This includes data preprocessing, feature engineering, training, and creating a simple API endpoint for inference.</p>
+                <p><strong>Artefact (Code Snippet):</strong></p>
+                <pre><code># Example of a simple FastAPI endpoint for a trained model
+from fastapi import FastAPI
+import joblib
+from pydantic import BaseModel
+
+class FeatureInput(BaseModel):
+    features: list[float]
+
+app = FastAPI()
+model = joblib.load('rainfall_model.pkl') # Load the trained model
+
+@app.post('/predict')
+async def predict(item: FeatureInput):
+    prediction = model.predict([item.features])
+    return {'prediction': int(prediction[0])}
+</code></pre>
+            </div>
+            
+            <div class="advanced-skill-item">
+                <h4>Advanced Skill 2: Advanced Python & Data Manipulation</h4>
+                <p>My proficiency in Python goes beyond basic scripts. I leverage advanced features like list comprehensions, generators, and decorators to write clean, efficient, and maintainable code. I am highly skilled in Pandas for complex data manipulation and analysis.</p>
+                <p><strong>Artefact (Code Snippet):</strong></p>
+                <pre><code># Using a decorator for timing a data-processing function
+import time
+
+def timer_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} ran in: {end_time - start_time:.4f}s")
+        return result
+    return wrapper
+
+@timer_decorator
+def process_large_dataframe(df):
+    # Complex processing
+    return df.groupby('category').agg({'value': 'mean'})</code></pre>
+            </div>
+
+            <div class="advanced-skill-item">
+                <h4>Advanced Skill 3: Complex Data Visualization (Matplotlib/Seaborn)</h4>
+                <p>I can create complex, multi-panel visualizations to uncover insights that aren't visible in simple charts. This includes correlation heatmaps, pair plots, and time-series decompositions.</p>
+                <p class="placeholder"><strong>Artefact:</strong> In the Bitcoin Analysis project, I generated a correlation heatmap using Seaborn to visualize the relationship between price, trading volume, and external market indices, which helped identify key features for the regression model.</p>
+            </div>
+            
+        </section>
+
+        <section id="leadership">
+            <h2>Collaborative & Leadership Experiences</h2>
+            
+            <h4>Project Lead (Backend & Presentation) - Travelcircle</h4>
+            <p><strong>Role:</strong> Backend Developer and Presenter.</p>
+            <p><strong>Responsibilities:</strong> Designed the MySQL database schema, developed the entire PHP backend logic for user authentication and booking management, and co-presented the final project to the faculty, demonstrating its functionality.</p>
+            <p><strong>Team Dynamics:</strong> Collaborated with two frontend developers. We used Git for version control and held daily check-ins to sync our progress. I was responsible for creating the API-like structure in PHP that the frontend could consume.</p>
+            <p><strong>Achievements:</strong> Successfully delivered a full-stack application from scratch in 6 weeks, which was highly commended for its clean database design and functional completeness.</p>
+
+            <h4 style="margin-top: 2rem;">Hackathon & Competition Experience</h4>
+            <ul style="list-style-position: inside; color: var(--text-muted);">
+                <li style="margin-bottom: 0.5rem;"><strong>Hackouts by DAIICT:</strong> Served as the Machine Learning Model Developer. Our team built a prototype for an app to identify plant diseases from images. I was responsible for implementing a Convolutional Neural Network (CNN) model.</li>
+                <li style="margin-bottom: 0.5rem;"><strong>ML Challenge by Amazon:</strong> As part of a 3-person team, we competed in a demand forecasting challenge. Our role was to predict product sales. Our team secured a score of 50.0, successfully advancing to the next stage of the competition.</li>
+            </ul>
+        </section>
+
+        <section id="ethics">
+            <h2>Global Awareness & Ethical Considerations</h2>
+            <p>In my work, particularly in machine learning, I am increasingly aware of the ethical dimensions of technology. The "move fast and break things" mantra is insufficient when building systems that can impact real people.</p>
+            <p><strong>Case Study - Predictive Models:</strong> In the Rainfall Prediction project, we discussed the ethical implications. A false negative (predicting no rain when a flash flood occurs) could have severe consequences for a farming community. This global issue of climate change and its impact on agriculture was a motivator.</p>
+            <p><strong>Analysis of Implications:</strong> We realized that "accuracy" is not a single metric. We had to decide whether to optimize for 'Recall' (minimizing false negatives) or 'Precision' (minimizing false positives). We chose to optimize for Recall, accepting a few more false alarms as a safer alternative for a high-impact scenario.</p>
+            <p><strong>Personal Reflection:</strong> This taught me that a data scientist's responsibility goes beyond just optimizing a score; it includes understanding the real-world impact, potential biases in the data (e.g., if data is only from wealthy regions), and the potential harm of our models. It's a commitment to building systems that are not only smart but also fair and responsible.</p>
+        </section>
+
+        <section id="future">
+            <h2>Future Aspirations & Professional Development</h2>
+            <p><strong>Career Goals:</strong> I am driven to become a Machine Learning Engineer specializing in Natural Language Processing (NLP) or Computer Vision. My long-term goal is to work on AI systems that enhance human-computer interaction and accessibility, such as advanced conversational AI or tools that assist the visually impaired.</p>
+            <p><strong>Areas for Further Study:</strong> To achieve this, my immediate focus is on deepening my expertise in Deep Learning. I am actively learning advanced architectures like Transformers (e.g., BERT, GPT) and Generative Adversarial Networks (GANs). I also plan to achieve professional certifications in TensorFlow and a major cloud provider (like AWS or GCP).</p>
+            <p><strong>Strategies for Continuous Improvement:</strong> My strategy is threefold:
+                <ol style="margin-left: 20px; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Practice:</strong> Contributing to open-source ML projects on GitHub.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Competition:</strong> Regularly participating in Kaggle competitions to benchmark my skills.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Community:</strong> Staying active in online communities, attending workshops, and seeking mentorship from senior engineers in the field.</li>
+                </ol>
+            </p>
+        </section>
+
+        <section id="conclusion">
+            <h2>Conclusion & Self-Assessment</h2>
+            
+            <h4>Personal Reflection</h4>
+            <p>This portfolio documents a journey from foundational academic knowledge to practical, hands-on application. My key takeaway has been the power of synthesis—combining programming, data analysis, and domain knowledge to build tangible solutions. I've learned that the most significant challenges are often not in the code itself, but in correctly defining the problem, managing collaborative workflows, and considering the ethical impact of the final product.</p>
+            
+            <h4>Self-Evaluation</h4>
+            <p>My initial goal was to gain a strong theoretical foundation, which my 9.3 GPA reflects. I have successfully transitioned this theory into practical skills in ML and web development. However, I recognize that my journey is just beginning. My primary area for growth is in building and deploying large-scale, production-ready systems, which is a significant step up from academic projects. I am actively working to bridge this gap through self-study of MLOps and cloud technologies.</p>
+
+            <h3>SWOT Analysis</h3>
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h4>Strengths</h4>
+                    <ul>
+                        <li>Strong (9.3 GPA) academic foundation.</li>
+                        <li>Proven skills in Python, ML, Data Science.</li>
+                        <li>Multiple relevant certifications.</li>
+                        <li>Full-stack project experience (PHP/MySQL).</li>
+                        <li>Bilingual (English, Hindi)</li>
+                    </ul>
+                </div>
+                <div class="swot-item">
+                    <h4>Weaknesses</h4>
+                    <ul>
+                        <li>Limited professional (internship) experience.</li>
+                        <li>Deep Learning (TensorFlow/PyTorch) is still developing.</li>
+                        <li>Limited exposure to large-scale cloud (AWS/GCP) deployments.</li>
+                    </ul>
+                </div>
+                <div class="swot-item">
+                    <h4>Opportunities</h4>
+                    <ul>
+                        <li>High demand for ML engineers.</li>
+                        <li>University projects and hackathons.</li>
+                        <li>Open-source projects to build experience.</li>
+                    </ul>
+                </div>
+                <div class="swot-item">
+                    <h4>Threats</h4>
+                    <ul>
+                        <li>Rapidly changing technology (keeping up).</li>
+                        <li>High competition for entry-level roles.</li>
+                        <li>Balancing academic load with skill-building.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <blockquote>
+                <p>"Hardip was a standout student in my 'Advanced Algorithms' course. His curiosity and rigorous approach to problem-solving were exceptional. He not only mastered the material but also helped his peers understand complex concepts."</p>
+                <footer>
+                    - Dr. Om Parekh, Professor of Computer Science, PDEU
+                </footer>
+            </blockquote>
+            
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Hardipsinh Jadeja. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.navbar a');
+            
+            const navHeight = document.querySelector('.navbar').offsetHeight;
+            const topOffset = navHeight + 40;
+
+            function changeActiveLink() {
+                let index = sections.length;
+
+                while(--index && window.scrollY + topOffset < sections[index].offsetTop) {}
+                
+                navLinks.forEach((link) => link.classList.remove('active'));
+                
+                const activeLink = document.querySelector(`.navbar a[href="#${sections[index].id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+
+            changeActiveLink();
+            window.addEventListener('scroll', changeActiveLink);
+        });
+    </script>
+
+</body>
+</html>
